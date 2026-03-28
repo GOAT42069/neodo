@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#f5f5dc">
+    <title>NEODO | Survive the Storm</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Bebas+Neue&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <canvas id="lightningCanvas"></canvas>
+
+        <div id="ui">
+            <div id="time">0s</div>
+            <div id="score-display">
+                <span id="score">0</span>
+            </div>
+        </div>
+
+        <button id="mute-btn" title="Toggle sound" aria-pressed="true">&#x1F507;</button>
+
+        <div id="status-indicators">
+            <div id="dash-status" class="status-item hidden">
+                <div class="status-icon">&#x1F4A8;</div>
+                <div class="status-bar">
+                    <div id="dash-bar" class="bar-fill"></div>
+                </div>
+            </div>
+            <div id="gravity-status" class="status-item hidden">
+                <div class="status-icon">&#x1F300;</div>
+                <div class="status-bar">
+                    <div id="gravity-bar" class="bar-fill"></div>
+                </div>
+            </div>
+            <div id="shield-status" class="status-item hidden">
+                <div class="status-icon">&#x1F6E1;&#xFE0F;</div>
+                <div class="status-bar">
+                    <div id="shield-bar" class="bar-fill"></div>
+                </div>
+            </div>
+            <div id="slowmo-status" class="status-item hidden">
+                <div class="status-icon">&#x23F1;&#xFE0F;</div>
+                <div class="status-bar">
+                    <div id="slowmo-bar" class="bar-fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="combo-meter" class="hidden">
+            <div id="combo-text">COMBO</div>
+            <div id="combo-value">x2.0</div>
+            <div id="combo-bar-container">
+                <div id="combo-bar"></div>
+            </div>
+        </div>
+
+        <div id="mobile-controls" class="hidden">
+            <div id="joystick-area" aria-label="Movement stick">
+                <div id="joystick-base"></div>
+                <div id="joystick-stick"></div>
+            </div>
+            <button id="dash-button" type="button" aria-label="Dash">
+                <span class="mobile-button-label">DASH</span>
+            </button>
+        </div>
+
+        <div id="menu" class="screen">
+            <div class="menu-box">
+                <h1>NEODO</h1>
+                <p class="tagline">Survive the Storm</p>
+
+                <div class="menu-content-grid">
+                    <div class="info-card left">
+                        <h3>CONTROLS</h3>
+                        <ul>
+                            <li>WASD: MOVE</li>
+                            <li>STICK: MOVE</li>
+                            <li>SPACE: DASH</li>
+                            <li>BUTTON: DASH</li>
+                        </ul>
+                    </div>
+                    <div class="info-card middle">
+                        <h3>OBJECTS</h3>
+                        <ul>
+                            <li>&#x1F535; FOLLOWS</li>
+                            <li>&#x1F7E3; FAST</li>
+                            <li>&#x1F7E0; EXPLODES</li>
+                            <li>&#x1F7E2; SLOWS</li>
+                        </ul>
+                    </div>
+                    <div class="info-card right">
+                        <h3>POWER-UPS</h3>
+                        <ul>
+                            <li>&#x1F6E1;&#xFE0F; SHIELD</li>
+                            <li>&#x23F1;&#xFE0F; SLOWMO</li>
+                            <li>&#x1F300; PULL</li>
+                            <li>&#x1F4A5; CLEAR</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="menu-highscore" id="highScoreMenu"></div>
+
+                <div class="menu-difficulty">
+                    <button class="difficulty-btn" data-difficulty="easy">EASY</button>
+                    <button class="difficulty-btn active" data-difficulty="normal">NORMAL</button>
+                    <button class="difficulty-btn" data-difficulty="hard">HARD</button>
+                </div>
+
+                <button id="startBtn">START</button>
+            </div>
+        </div>
+
+        <div id="gameOver" class="screen hidden">
+            <div class="menu-box">
+                <h1 id="gameOverTitle">GAME OVER</h1>
+                <div id="newRecord" class="hidden">
+                    <p class="record">NEW RECORD</p>
+                </div>
+                <div class="final-stats">
+                    <p id="finalTime">Time: 0s</p>
+                    <p id="finalScore">Score: 0</p>
+                    <p id="highScoreDisplay">Best: 0</p>
+                </div>
+                <div class="game-over-buttons">
+                    <button id="restartBtn">RETRY</button>
+                    <button id="menuBtn" class="secondary-btn">MENU</button>
+                </div>
+            </div>
+        </div>
+
+        <button id="fullscreen-btn" title="Toggle Fullscreen">&#x26F6;</button>
+    </div>
+
+    <div id="rotate-overlay" class="hidden">Please rotate your device to landscape for the best experience</div>
+    <script src="game.js"></script>
+</body>
+
+</html>
